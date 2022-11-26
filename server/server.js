@@ -14,7 +14,7 @@ const { ApolloServer } = require("apollo-server-express");
 // is this correct path?
 
 const { typeDefs, resolvers } = require("./schemas");
-const db = require("./config/connection");
+const app = express();
 
 //updated auth middleware function to work with GraphQL API
 
@@ -25,7 +25,12 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-const app = express();
+server.applyMiddleware({ app });
+
+// if we're in production, serve client/build as static assets
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -38,7 +43,6 @@ app.get("/", (req, res) => {
 
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
-  server.applyMiddleware({ app });
 
   db.once("open", () => {
     app.listen(PORT, () => {
@@ -52,10 +56,5 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
 // Calling the async function to start the server
 startApolloServer(typeDefs, resolvers);
-
-// if we're in production, serve client/build as static assets
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
-}
 
 app.use(routes);
