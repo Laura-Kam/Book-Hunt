@@ -3,6 +3,9 @@ const path = require("path");
 const db = require("./config/connection");
 const routes = require("./routes");
 
+//updated auth middleware function to work with GraphQL API
+const { authMiddleware } = require("./utils/auth");
+
 //import ApolloServer class
 
 const { ApolloServer } = require("apollo-server-express");
@@ -13,10 +16,13 @@ const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 
+//updated auth middleware function to work with GraphQL API
+
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
 
 const app = express();
