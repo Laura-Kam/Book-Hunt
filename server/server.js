@@ -18,14 +18,12 @@ const app = express();
 
 //updated auth middleware function to work with GraphQL API
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
 });
-
-server.applyMiddleware({ app });
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === "production") {
@@ -43,6 +41,7 @@ app.get("/", (req, res) => {
 
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
+  server.applyMiddleware({ app });
 
   db.once("open", () => {
     app.listen(PORT, () => {
