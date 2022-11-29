@@ -98,7 +98,7 @@ Through 'npm start', the local host server will start on local host 3000.
 
 [Github Repository](https://github.com/Laura-Kam/Book-Hunt/)
 
-[LiveURL]()
+[LiveURL](https://obscure-woodland-85890.herokuapp.com/)
 
 ## Contributing
 
