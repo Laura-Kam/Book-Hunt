@@ -19,5 +19,9 @@
   },
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.1",
+    "apollo-server-express": "^2.15.0"
   }
 }
