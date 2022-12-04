@@ -102,7 +102,7 @@ Through 'npm start', the local host server will start on local host 3000.
 
 ## Contributing
 
-To contribute to the repo yourself please:
+To contribute to the repository yourself please:
 
 Git clone the repository, work on the code, then make a pull request.
 
