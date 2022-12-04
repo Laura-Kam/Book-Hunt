@@ -63,7 +63,7 @@ const SearchBooks = () => {
 
   // create function to handle saving a book to our database
 
-  //attemp to use useMutation hook to execue save_book mutation. keep try catch block.
+  //useMutation hook to execute save_book mutation
 
   const handleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id

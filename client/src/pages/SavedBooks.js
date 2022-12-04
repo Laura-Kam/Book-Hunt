@@ -24,6 +24,7 @@ const SavedBooks = () => {
   const userData = data?.me || {};
 
   //handle delete book mutation used
+  // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
     try {
       const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -39,8 +40,6 @@ const SavedBooks = () => {
       console.error(err);
     }
   };
-
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
 
   // if data isn't here yet, say so
   if (loading) {
