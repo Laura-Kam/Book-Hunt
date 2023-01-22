@@ -109,4 +109,4 @@ Git clone the repository, work on the code, then make a pull request.
 ## Contact
 
 If you have any questions, or would like to get in touch find me on GitHub [Laura-Kam](https://github.com/Laura-Kam)
-or email me at laura_ek@yahoo.co.uk.
+or email me at laurakam91@gmail.com.
